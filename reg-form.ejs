@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="/reg-form.css" />
+  </head>
+  <body>
+    <!-- <section class="head-section"></section> -->
+    <a href="/bm-login-post" class="back-button">←</a>
+    <div class="container">
+      <div class="registration-form">
+        <h2>Registration Form</h2>
+        <p>Please select user role:</p>
+        <img src="main.png" class="collimg" alt="" />
+        <select id="role" onchange="changeForm()">
+          <option value="">Select</option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+        </select>
+        <form
+          id="registration-form"
+          class="student-form"
+          action="/poststudent"
+          method="POST"
+          style="display: none"
+          novalidate
+          enctype="multipart/form-data"
+        >
+          <!-- Student fields -->
+          <div id="student-fields">
+            <div class="form-group">
+              <label for="fullName">Full Name:</label>
+              <input
+                type="text"
+                id="firstName"
+                name="fullName"
+                placeholder="Enter student name"
+                required
+              />
+            </div>
+            <div class="form-gr">
+              <div class="form-group">
+                <label for="rollnumber">Roll number:</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="rollnumber"
+                  placeholder="Enter student roll number"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                  <option value="">Select</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email address"
+                  required
+                />
+              </div>
+            </div>
+            <input type="hidden" value="student" name="type" />
+            <div class="form-gr">
+              <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input
+                  type="text"
+                  id="phone"
+                  name="phone"
+                  placeholder="Enter your phone number"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="dateOfBirth">Date of Birth:</label>
+                <input
+                  type="date"
+                  id="dateOfBirth"
+                  name="dateofbirth"
+                  required
+                />
+              </div>
+              <div class="form-grop">
+                <label for="image">Upload Student Image :</label>
+                <input type="file" class="filepick" name="image" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="address">Address:</label>
+              <textarea
+                id="address"
+                name="address"
+                rows="6"
+                placeholder="Detailed overview of student address including city,state,pincode"
+                required
+              ></textarea>
+            </div>
+            <div class="form-gr">
+              <div class="form-group">
+                <label for="course">Course:</label>
+                <select id="course" name="course" required>
+                  <option value="">Select</option>
+                  <option value="cse">CSE</option>
+                  <option value="ece">ECE</option>
+                  <option value="eee">EEE</option>
+                  <option value="mech">MECH</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="year">Year of study:</label>
+                <select id="semester" name="year" required>
+                  <option value="">Select</option>
+                  <option value="1">1st year</option>
+                  <option value="2">2nd year</option>
+                  <option value="3">3rd year</option>
+                  <option value="4">4th year</option>
+                </select>
+              </div>
+            </div>
+
+            <label for="seattype">Seat type:</label>
+            <select
+              id="seattype"
+              name="seattype"
+              onchange="changeseat()"
+              required
+            >
+              <option value="">Select</option>
+              <option value="Management">Management</option>
+              <option value="convenier">convenier</option>
+            </select>
+            <div class="box1" style="display: none">
+              <table class="committed-fee-table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>1st Year</th>
+                    <th>2nd Year</th>
+                    <th>3rd Year</th>
+                    <th>4th Year</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Tuition Fee</th>
+                    <td>
+                      <input type="number" class="fee-input" name="tution1" />
+                    </td>
+                    <td>
+                      <input type="number" class="fee-input" name="tution2" />
+                    </td>
+                    <td>
+                      <input type="number" class="fee-input" name="tution3" />
+                    </td>
+                    <td>
+                      <input type="number" class="fee-input" name="tution4" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>University Fee</th>
+                    <td>
+                      <input type="number" class="fee-input" name="unifee1" />
+                    </td>
+                    <td>
+                      <input type="number" class="fee-input" name="unifee2" />
+                    </td>
+                    <td>
+                      <input type="number" class="fee-input" name="unifee3" />
+                    </td>
+                    <td>
+                      <input type="number" class="fee-input" name="unifee4" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Transport Fee</th>
+                    <td>
+                      <input type="number" class="fee-input" name="transfee1" />
+                    </td>
+                    <td>
+                      <input type="number" class="fee-input" name="transfee2" />
+                    </td>
+                    <td>
+                      <input type="number" class="fee-input" name="transfee3" />
+                    </td>
+                    <td>
+                      <input type="number" class="fee-input" name="transfee4" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <button type="submit">Register</button>
+        </form>
+        <!-- Teacher fields -->
+        <form
+          action="/postteacher"
+          class="teacher-form"
+          style="display: none"
+          method="POST"
+        >
+          <div id="teacher-fields">
+            <div class="form-group">
+              <label for="title">Title:</label>
+              <select id="title" name="title">
+                <option value="">Select</option>
+                <option value="Mr.">Mr.</option>
+                <option value="Ms.">Ms.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Dr.">Dr.</option>
+                <option value="Prof.">Prof.</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fullName">Full Name:</label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email address"
+                required
+              />
+            </div>
+            <input type="hidden" value="teacher" name="type" />
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword">Confirm Password:</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Confirm your password"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="image">Profile Picture:</label>
+              <input type="file" id="image" name="image" required />
+            </div>
+            <div class="form-group">
+              <label for="type">Type:</label>
+              <select id="type" name="time">
+                <option value="">Select</option>
+                <option value="Full-time">Full-time</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Guest Lecturer">Guest Lecturer</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="price">Salary:</label>
+              <input
+                type="number"
+                id="price"
+                name="price"
+                placeholder="Enter your expected salary"
+                required
+              />
+            </div>
+          </div>
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function changeForm() {
+        var role = document.getElementById("role").value;
+        if (role == "student") {
+          document.querySelector(".student-form").style.display = "block";
+          document.querySelector(".teacher-form").style.display = "none";
+        } else if (role == "teacher") {
+          document.querySelector(".student-form").style.display = "none";
+          document.querySelector(".teacher-form").style.display = "block";
+        } else {
+          document.querySelector(".student-form").style.display = "none";
+          document.querySelector(".teacher-form").style.display = "none";
+        }
+      }
+      function changeseat() {
+        var role = document.getElementById("seattype").value;
+        if (role == "Management" || role == "convenier") {
+          document.querySelector(".box1").style.display = "block";
+        } else {
+          document.querySelector(".box1").style.display = "none";
+        }
+      }
+      const role = document.getElementById("role");
+      const container = document.querySelector(".container");
+      role.addEventListener("change", () => {
+        container.scrollIntoView({ behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>General Managers</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let gm of gmdata) { %>
+        <tr>
+          <td><%= gm.firstname %></td>
+          <td><%= gm.lastname %></td>
+          <td><%= gm.age %></td>
+          <td>
+            <% if (gm.associates && gm.associates.length > 0) { %>
+            <ul>
+              <% gm.associates.forEach(function(associate) { %>
+              <input
+                type="text"
+                class="associate"
+                value="<%= associate.associate %>"
+              />
+              <% }); %>
+            </ul>
+            <% } else { %>
+            <p>No associates</p>
+            <% } %>
+          </td>
+          <td>
+            <button class="btn">getdata</button>
+          </td>
+          <td>
+            <div class="main"></div>
+          </td>
+          <td>
+            <a href="/edit-gm/<%= gm._id %>">Edit</a>
+            <a href="/delete-gm/<%= gm._id %>">Delete</a>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <script src="/display.js"></script>
+  </body>
+</html> -->
+
+<!-- <div class="info-section">
+                <h2>Performance & Guidance</h2>
+                <div class="guidance-box">
+                  <p><%= employee.guidance %></p>
+                </div>
+              </div> -->
+<!-- 
+              <% if (employee.businessAssociates &&
+              employee.businessAssociates.length > 0) { %>
+              <div class="info-section">
+                <h2>Assigned Business Associates</h2>
+                <div class="associates-grid">
+                  <% employee.businessAssociates.forEach(function(associate) {
+                  %>
+                  <div class="associate-card">
+                    <img
+                      src="<%= associate.image %>"
+                      alt="<%= associate.name %>"
+                    />
+                    <div class="associate-info">
+                      <h3><%= associate.name %></h3>
+                      <p><%= associate.role %></p>
+                    </div>
+                  </div>
+                  <% }); %>
+                </div>
+              </div>
+              <% } %> -->
+
+<!-- <div class="info-item">
+                    <label>Email</label>
+                    <span><%= employee.email %></span>
+                  </div> -->
+<!-- <div class="info-item">
+                    <label>Join Date</label>
+                    <span
+                      ><%= new Date(employee.joinDate).toLocaleDateString()
+                      %></span
+                    >
+                  </div> -->

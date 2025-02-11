@@ -1,0 +1,194 @@
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(135deg, #f0f7ff 0%, #e8f1fa 100%);
+  /* min-height: 100vh; */
+  padding: 1rem;
+  color: #1f2937;
+}
+
+.container {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.form-card {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #4a90e2, #357abd);
+  padding: 1.5rem 2rem;
+  color: white;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.form-header h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Form Styles */
+form {
+  padding: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* File Upload Styles */
+.file-upload {
+  border: 2px dashed #4a90e2;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  background: #f0f7ff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.file-upload:hover {
+  background: #e8f1fa;
+}
+
+.file-upload svg {
+  color: #4a90e2;
+  margin-bottom: 0.5rem;
+}
+
+.file-upload span {
+  font-size: 0.875rem;
+  color: #4a90e2;
+}
+
+/* .file-upload input[type="file"] {
+  display: none;
+} */
+
+/* Submit Button Styles */
+.form-submit {
+  text-align: right;
+  margin-top: 2rem;
+}
+
+button {
+  background: linear-gradient(to right, #4a90e2, #357abd);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(to right, #357abd, #2868a9);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  body {
+    padding: 1rem;
+  }
+}
+
+.back-button {
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  transition: all 0.2s;
+  background-color: white;
+}
+
+.back-button:hover {
+  color: #357abd;
+  transform: translateX(-4px);
+}
+.collimg {
+  height: 4rem;
+}

@@ -1,0 +1,146 @@
+body {
+  font-family: Segoe UI;
+  background: linear-gradient(135deg, #f0f7ff 0%, #e8f1fa 100%);
+}
+
+.container {
+  width: 60rem;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.registration-form {
+  padding: 20px;
+}
+
+h2 {
+  margin-top: 0;
+  font-weight: bold;
+  color: #333;
+}
+
+p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+.form-gr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+select:nth-last-child(1) {
+  width: 23rem;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+input[type="file"] {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+.collimg {
+  height: 5rem;
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+}
+#role {
+  margin-top: 2rem;
+}
+.committed-fee-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.committed-fee-table th,
+.committed-fee-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+.committed-fee-table td div {
+  display: flex;
+}
+.committed-fee-table th {
+  background-color: #f0f0f0;
+}
+
+.committed-fee-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.committed-fee-table tr:hover {
+  background-color: #e9e9e9;
+}
+
+.fee-input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: inherit; /* inherit the background color from the parent element */
+  text-align: center;
+}
+
+.fee-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #ccc;
+}
+
+.bred:invalid {
+  border: 2px solid red;
+}
+.back-button {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 0.2rem 0.8rem;
+  text-align: center;
+  font-size: 2.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: white;
+}

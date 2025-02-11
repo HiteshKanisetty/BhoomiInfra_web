@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bminterface.css" />
+    <title>Board Portal Dashboard</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="head">
+        <img src="main.png" alt="" />
+        <h2>Bhoomi Infra Reality</h2>
+      </div>
+      <!-- <h1>Board Portal Dashboard</h1> -->
+      <a class="create-user-btn" href="/create-user">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <line x1="19" y1="8" x2="19" y2="14" />
+          <line x1="16" y1="11" x2="22" y2="11" />
+        </svg>
+        Create User
+      </a>
+    </header>
+    <div class="container">
+      <div class="grid">
+        <form action="/view-gm" method="get">
+          <button class="card" type="submit">
+            <div class="icon-container">
+              <svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <h2>General Managers</h2>
+            <p>View and manage general manager accounts and permissions</p>
+          </button>
+        </form>
+        <form action="/view-bm" method="get">
+          <button class="card">
+            <div class="icon-container">
+              <svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+              </svg>
+            </div>
+            <h2>Business Associates</h2>
+            <p>Access business associate profiles and relationships</p>
+          </button>
+        </form>
+      </div>
+    </div>
+    <footer>
+      <p>
+        &copy; 2025 Bhoomi Infra Reality | Designed and Developed by
+        <a href="/">Hitesh Kanisetty</a>
+      </p>
+    </footer>
+  </body>
+</html>

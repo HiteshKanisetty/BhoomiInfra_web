@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Board Portal Login</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        font-family: inter, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: linear-gradient(135deg, #f0f7ff 0%, #e8f1fa 100%);
+      }
+
+      .container {
+        width: 100%;
+        max-width: 28rem;
+        background: white;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .header {
+        background: #4a90e2;
+        padding: 1.5rem 2rem;
+        color: white;
+        position: relative;
+      }
+
+      .back-button {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        color: white;
+        text-decoration: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        border: none;
+        background: none;
+        padding: 0.5rem;
+        line-height: 1;
+      }
+
+      .back-button:hover {
+        color: #cce4ff;
+      }
+
+      .header h1 {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-top: 0.5rem;
+      }
+
+      .header p {
+        text-align: center;
+        font-size: 0.875rem;
+        color: #cce4ff;
+        margin-top: 0.25rem;
+      }
+
+      .main {
+        padding: 2rem;
+      }
+
+      .avatar {
+        width: 5rem;
+        height: 5rem;
+        background: #f0f7ff;
+        border-radius: 50%;
+        margin: 0 auto 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .avatar img {
+        width: 4rem;
+        height: 4rem;
+        color: #4a90e2;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 0.5rem;
+      }
+
+      .input-group {
+        position: relative;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        outline: none;
+      }
+
+      .input-group input:focus {
+        border-color: #4a90e2;
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+      }
+
+      .input-group svg {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1.25rem;
+        height: 1.25rem;
+        color: #9ca3af;
+      }
+
+      .submit-button {
+        width: 100%;
+        padding: 0.75rem;
+        background: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        cursor: pointer;
+      }
+
+      .submit-button:hover {
+        background: #357abd;
+      }
+
+      .submit-button svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+
+      .forgot-password {
+        display: block;
+        text-align: center;
+        margin-top: 1.5rem;
+        color: #4a90e2;
+        text-decoration: none;
+        font-size: 0.875rem;
+      }
+
+      .forgot-password:hover {
+        color: #357abd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <a href="/" class="back-button">←</a>
+        <h1>Board Portal</h1>
+        <p>Administrative Access</p>
+      </div>
+      <div class="main">
+        <div class="avatar">
+          <img src="/image.png" alt="" />
+        </div>
+
+        <form action="/bm-login-post" method="post">
+          <div class="form-group">
+            <label for="userId">User ID</label>
+            <div class="input-group">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="8" r="5" />
+                <path d="M20 21a8 8 0 1 0-16 0" />
+              </svg>
+              <input
+                type="text"
+                id="userId"
+                name="userid"
+                placeholder="Enter your user ID"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-group">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+          </div>
+          <button type="submit" class="submit-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+              <polyline points="10 17 15 12 10 7" />
+              <line x1="15" x2="3" y1="12" y2="12" />
+            </svg>
+            Sign In
+          </button>
+        </form>
+        <a href="#" class="forgot-password">Forgot your password?</a>
+      </div>
+    </div>
+  </body>
+</html>

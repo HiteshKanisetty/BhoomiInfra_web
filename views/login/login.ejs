@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sree Venkateswara Engineering College Login</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <img src="/main.png" alt="College Logo" />
+        <h1>Bhoomi Infra Reality</h1>
+        <p>Redefining Real Estate</p>
+      </div>
+      <div class="right">
+        <div class="tabs">
+          <button class="active button" onclick="showForm('teacherForm')">
+            General Manager
+          </button>
+          <button class="button" onclick="showForm('studentForm')">
+            Bussiness Associate
+          </button>
+        </div>
+        <div class="coll-log">
+          <h5>Board Member Login ?</h5>
+          <a href="/bm-login">Enter</a>
+        </div>
+        <!-- <form id="adminForm" action="/dashboard" method="post" class="active">
+          <div class="form-group">
+            <label for="adminEmail">Email</label>
+            <input
+              type="email"
+              id="adminEmail"
+              name="username"
+              placeholder="example@email.com"
+            />
+          </div>
+          <div class="form-group">
+            <label for="adminPassword">Password</label>
+            <input
+              type="password"
+              id="adminPassword"
+              name="password"
+              placeholder="Enter your password"
+            />
+          </div>
+
+          <div class="form-group">
+            <button type="submit">Sign in</button>
+          </div>
+        </form> -->
+        <form id="teacherForm" action="/teacher" method="post" class="active">
+          <div class="form-group">
+            <label for="userId">User ID</label>
+            <div class="input-group">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="8" r="5" />
+                <path d="M20 21a8 8 0 1 0-16 0" />
+              </svg>
+              <input
+                type="text"
+                id="userId"
+                placeholder="Enter your user ID"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-group">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+          </div>
+          <button type="submit" class="submit-button">Sign In</button>
+        </form>
+        <form id="studentForm" action="/student" method="post">
+          <div class="form-group">
+            <label for="userId">User ID</label>
+            <div class="input-group">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="8" r="5" />
+                <path d="M20 21a8 8 0 1 0-16 0" />
+              </svg>
+              <input
+                type="text"
+                id="userId"
+                placeholder="Enter your user ID"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-group">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+          </div>
+          <button type="submit" class="submit-button">Sign In</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      function showForm(formId) {
+        const forms = document.querySelectorAll("form");
+        forms.forEach((form) => form.classList.remove("active"));
+        document.getElementById(formId).classList.add("active");
+
+        const buttons = document.querySelectorAll(".tabs .button");
+        buttons.forEach((button) => button.classList.remove("active"));
+        document
+          .querySelector(`.tabs button[onclick="showForm('${formId}')"]`)
+          .classList.add("active");
+      }
+    </script>
+  </body>
+</html>

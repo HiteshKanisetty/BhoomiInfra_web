@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Directory</title>
+    <link rel="stylesheet" href="/dispgm.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Back Button -->
+      <a href="/bm-login-post" class="back-button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+      </a>
+
+      <!-- Header -->
+      <header class="page-header">
+        <div class="header-content">
+          <div class="header-title">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <div>
+              <h1>General-Manager Directory</h1>
+              <p>Manage and view all employee information</p>
+            </div>
+          </div>
+          <div class="search-bar">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input
+              type="text"
+              placeholder="Search employees..."
+              id="searchInput"
+            />
+          </div>
+        </div>
+      </header>
+
+      <!-- Employee Table -->
+      <div class="table-container">
+        <table class="employee-table">
+          <thead>
+            <tr>
+              <th>Employee</th>
+              <th>ID</th>
+              <th>Layout Name</th>
+              <th>Plots Sold</th>
+              <th>Mobile</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="employeeTableBody">
+            <% employees.forEach(function(employee) { %>
+            <tr>
+              <td>
+                <div class="employee-cell">
+                  <img
+                    src="<%= employee.image %>"
+                    alt="<%= employee.firstName %> <%= employee.lastName %>"
+                  />
+                  <span
+                    ><%= employee.firstname %> <%= employee.lastname %></span
+                  >
+                </div>
+              </td>
+              <td><%= employee.employeeid %></td>
+              <td><%= employee.layoutname %></td>
+              <td>
+                <div class="plots-sold">
+                  <div
+                    class="plots-bar"
+                    style="width: <%= (employee.plotssold / 20) * 100 %>%"
+                  ></div>
+                  <span><%= employee.plotssold %></span>
+                </div>
+              </td>
+              <td><%= employee.mobile %></td>
+              <td><%= employee.age %></td>
+              <td><%= employee.gender %></td>
+              <td>
+                <a
+                  href="/general-manager?id=<%= employee._id %>"
+                  class="view-profile-link"
+                >
+                  View Profile
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      // Search functionality
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", function (e) {
+          const searchTerm = e.target.value.toLowerCase();
+          const rows = document.querySelectorAll("#employeeTableBody tr");
+
+          rows.forEach((row) => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(searchTerm) ? "" : "none";
+          });
+        });
+    </script>
+  </body>
+</html>
