@@ -1,4 +1,4 @@
-const buttons = document.querySelectorAll(".btn");
+const button = document.querySelector(".btn");
 const main = document.querySelector(".main");
 
 const getdata = (associates) => {
@@ -11,47 +11,47 @@ const getdata = (associates) => {
   Promise.all(fetchPromises).then((results) => {
     const products = results.flat();
     main.innerHTML = " ";
-
-    const html = `
-      <table>
-        <thead>
-          <tr>
-            <th>sno</th>
-            <th>name</th>
-            <th>roll number</th>
-            <th>seattype</th>
-            <th>view more</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${products
-            .map((product, index) => {
-              return `
-                <tr>
-                  <td>${index + 1}</td>
-                  <td>${product.firstname.toUpperCase()}</td>
-                  <td>${product.lastname.toUpperCase()}</td>
-                  <td>${product.layoutname}</td>
-                  <td>
-                    <a href="/view-more?id=${product._id}">view more</a>
-                  </td>
-                </tr>
-              `;
-            })
-            .join("")}
-        </tbody>
-      </table>
-    `;
-    main.insertAdjacentHTML("beforeend", html);
+    if (products.length > 0) {
+      const html = `
+    <h2 class="h2">Business Associates</h2>
+        ${products
+          .map((associate, index) => {
+            return `
+                 
+          <div>
+           
+                <div  class="associate-card">
+                  <img
+                    src=${associate.image}
+                    class="associate-image"
+                  />
+                  <div class="associate-info">
+                    <h3>${associate.firstname}</h3>
+                    <p>${associate.gender}</p>
+                  </div>
+                </div>
+             
+              
+       
+          </div>
+   
+            `;
+          })
+          .join("")}
+     
+  `;
+      main.insertAdjacentHTML("beforeend", html);
+    } else {
+      main.innerHTML = "No associates found";
+    }
   });
 };
 
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const associates = Array.from(
-      button.closest("tr").querySelectorAll(".associate")
-    ).map((input) => input.value);
-    console.log(associates);
-    getdata(associates);
-  });
+button.addEventListener("click", () => {
+  const associates = Array.from(
+    document.querySelectorAll(".associate") // Select all inputs with class 'associate'
+  ).map((input) => input.value); // Map to get their values
+
+  console.log("Associates:", associates); // Log the associates array
+  getdata(associates); // Call the function with the associates array
 });

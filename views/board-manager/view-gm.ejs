@@ -81,9 +81,9 @@
             <tr>
               <th>Employee</th>
               <th>ID</th>
-              <th>Layout Name</th>
+              <!-- <th>Layout Name</th>
               <th>Plots Sold</th>
-              <th>Mobile</th>
+              <th>Mobile</th> -->
               <th>Age</th>
               <th>Gender</th>
               <th>Action</th>
@@ -104,17 +104,17 @@
                 </div>
               </td>
               <td><%= employee.employeeid %></td>
-              <td><%= employee.layoutname %></td>
-              <td>
+              <!-- <td><%# employee.layoutname %></td> -->
+              <!-- <td>
                 <div class="plots-sold">
                   <div
                     class="plots-bar"
-                    style="width: <%= (employee.plotssold / 20) * 100 %>%"
+                    style="width: <%# (employee.plotssold / 20) * 100 %>%"
                   ></div>
-                  <span><%= employee.plotssold %></span>
+                  <span><%# employee.plotssold %></span>
                 </div>
-              </td>
-              <td><%= employee.mobile %></td>
+              </td> -->
+              <!-- <td><%# employee.mobile %></td> -->
               <td><%= employee.age %></td>
               <td><%= employee.gender %></td>
               <td>

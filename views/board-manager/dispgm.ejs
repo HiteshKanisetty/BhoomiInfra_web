@@ -9,34 +9,30 @@
     <link rel="stylesheet" href="/profile.css" />
   </head>
   <body>
+    <a href="/view-gm" class="back-button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+    </a>
     <div class="container">
       <!-- Back Button -->
-      <a href="/view-gm" class="back-button">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M19 12H5M12 19l-7-7 7-7" />
-        </svg>
-      </a>
 
       <div class="profile-container">
         <!-- Profile Header -->
         <div class="profile-header">
-          <div class="profile-cover"></div>
           <div class="profile-info">
             <div class="profile-image">
-              <img
-                src="<%= employee.image %>"
-                alt="<%= employee.firstName %> <%= employee.lastName %>"
-              />
+              <img src="<%= employee.image %>" />
             </div>
             <div class="profile-details">
               <h1><%= employee.firstname %> <%= employee.lastname %></h1>
@@ -103,7 +99,7 @@
         <!-- Profile Content -->
         <div class="profile-content">
           <div class="info-section">
-            <h2>Personal Information</h2>
+            <h2 class="h2">Personal Information</h2>
             <div class="info-grid">
               <div class="info-item">
                 <label>Age</label>
@@ -120,7 +116,7 @@
 
           <!-- Action Buttons -->
           <div class="action-buttons">
-            <a href="/employee/<%= employee.id %>/edit" class="btn btn-edit">
+            <a href="/employee/<%= employee.id %>/edit" class="btn-edit">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -138,10 +134,7 @@
               </svg>
               Edit Profile
             </a>
-            <a
-              href="/employee/<%= employee.id %>/associates"
-              class="btn btn-assign"
-            >
+            <button class="btn btn-assign">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -158,11 +151,28 @@
                 <line x1="19" y1="8" x2="19" y2="14" />
                 <line x1="22" y1="11" x2="16" y2="11" />
               </svg>
-              Assign Business Associates
-            </a>
+              Assigned Business Associates
+            </button>
           </div>
         </div>
       </div>
     </div>
+    <div class="main container associates-section"></div>
+    <div>
+      <% if (employee.associates && employee.associates.length > 0) { %>
+      <div>
+        <% employee.associates.forEach(function(associate) { %>
+        <input
+          type="text"
+          class="associate"
+          value="<%= associate.associate %>"
+        />
+        <% }); %>
+      </div>
+      <% } else { %>
+      <p>No associates</p>
+      <% } %>
+    </div>
+    <script src="/display.js"></script>
   </body>
 </html>
