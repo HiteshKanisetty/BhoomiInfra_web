@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Registration</title>
+    <link rel="stylesheet" href="/reg-form.css" />
+  </head>
+  <body>
+    <a href="/view-gm" class="back-button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+    </a>
+    <div class="container">
+      <div class="form-card">
+        <!-- Header -->
+        <div class="form-header">
+          <div class="header-content">
+            <div class="icon-container">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <line x1="19" y1="8" x2="19" y2="14" />
+                <line x1="16" y1="11" x2="22" y2="11" />
+              </svg>
+            </div>
+            <h1>Employee Registration</h1>
+          </div>
+          <img src="/main.png" class="collimg" alt="" />
+        </div>
+        <!-- Form -->
+        <form
+          id="registrationForm-gm"
+          action="/edit-gm"
+          method="POST"
+          novalidate
+          enctype="multipart/form-data"
+        >
+          <input type="text" value="<%=gmdata.id %>" name="id" />
+          <!-- Name Fields -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstname"
+                value="<%=gmdata.firstname%>"
+                placeholder="Enter first name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                value="<%=gmdata.lastname%>"
+                name="lastname"
+                placeholder="Enter last name"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Contact and Personal Info -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="mobileNumber">Mobile Number</label>
+              <input
+                type="tel"
+                id="mobileNumber"
+                value="<%=gmdata.mobile%>"
+                name="mobile"
+                placeholder="Enter mobile number"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input
+                type="number"
+                name="age"
+                id="age"
+                value="<%=gmdata.age%>"
+                placeholder="Enter age"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="gender">Gender</label>
+
+              <select
+                id="gender"
+                name="gender"
+                value="<%=gmdata.gender%>"
+                required
+              >
+                <option value="">Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Employee Info -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="employeeId">Employee ID</label>
+              <input
+                type="text"
+                id="employeeId"
+                value="<%=gmdata.employeeid%>"
+                name="employeeid"
+                placeholder="Enter employee ID"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="layoutName">Layout Name</label>
+              <select id="layoutName" name="layoutname" required>
+                <option value="">Select layout</option>
+                <option value="Green Valley">Green Valley</option>
+                <option value="Sunset Heights">Sunset Heights</option>
+                <option value="Royal Gardens">Royal Gardens</option>
+                <option value="Lake View">Lake View</option>
+                <option value="Mountain Vista">Mountain Vista</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="plotsSold">Plots Sold</label>
+              <input
+                type="number"
+                id="plotsSold"
+                name="plotssold"
+                value="<%=gmdata.plotssold%>"
+                placeholder="Enter number of plots"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Guidance Field -->
+
+          <!-- File Upload -->
+
+          <!-- Submit Button -->
+          <div class="form-submit">
+            <button type="submit">save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      //   function changeForm() {
+      //     var role = document.getElementById("role").value;
+      //     if (role === "Generalmanager") {
+      //       document.getElementById("registrationForm-gm").style.display =
+      //         "block";
+      //       document.getElementById("registrationForm-ba").style.display = "none";
+      //     } else if (role === "Bussinessassociate") {
+      //       document.getElementById("registrationForm-ba").style.display =
+      //         "block";
+      //       document.getElementById("registrationForm-gm").style.display = "none";
+      //     } else {
+      //       document.getElementById("registrationForm-ba").style.display = "none";
+      //       document.getElementById("registrationForm-gm").style.display = "none";
+      //     }
+      //   }
+      //   role.addEventListener("change", () => {});
+    </script>
+  </body>
+</html>

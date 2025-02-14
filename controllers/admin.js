@@ -150,3 +150,63 @@ exports.getselectedgm = (req, res, next) => {
     });
   });
 };
+
+exports.postdelete = (req, res, next) => {
+  const id = req.body.id;
+  Gmmodel.deleteOne({ _id: id })
+    .then((result) => {
+      res.redirect("/view-gm");
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "Internal server error" });
+    });
+};
+
+exports.getedit = (req, res, next) => {
+  const id = req.params.id;
+  const edit = req.query.edit;
+  Gmmodel.findById(id)
+    .then((data) => {
+      res.render("board-manager/edit-data.ejs", {
+        editing: edit,
+        gmdata: data,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.postgmedit = (req, res, next) => {
+  const {
+    id,
+    firstname,
+    lastname,
+    mobile,
+    age,
+    gender,
+    employeeid,
+    layoutname,
+    plotssold,
+  } = req.body;
+
+  Gmmodel.findById(id)
+    .then((gm) => {
+      if (!gm) {
+        return res.redirect("/view-gm");
+      }
+      gm.firstname = firstname;
+      gm.lastname = lastname;
+      gm.age = age;
+      gm.mobile = mobile;
+      gm.gender = gender;
+      gm.employeeid = employeeid;
+      gm.layoutname = layoutname;
+      gm.plotssold = plotssold;
+
+      return gm.save().then((result) => {
+        console.log("updated product");
+        res.redirect("/");
+      });
+    })
+    .catch((err) => console.log(err));
+};

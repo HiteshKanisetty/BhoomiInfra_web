@@ -174,8 +174,8 @@ body {
 
 /* Action Buttons */
 .action-buttons {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  justify-content: space-evenly;
   gap: 1rem;
   margin-top: 2rem;
 }
@@ -194,6 +194,7 @@ body {
 }
 
 .btn-edit {
+  width: 20%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -214,8 +215,23 @@ body {
   background: #357abd;
   transform: translateY(-2px);
 }
-
+.btn-delete {
+  border: none;
+  padding: 0.85rem 1.7rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: rgb(248, 204, 204);
+}
+.btn-delete:hover {
+  border: 3px solid red;
+  background-color: white;
+  color: red;
+}
 .btn-assign {
+  width: 20%;
+
   background: white;
   color: #333;
   border: 1px solid #ddd;

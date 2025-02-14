@@ -12,5 +12,8 @@ router.post("/create-user-ba", admincontroller.postformba);
 router.get("/view-gm", admincontroller.getgmdata);
 router.get("/gm", admincontroller.getbm);
 router.get("/general-manager", admincontroller.getselectedgm);
+router.post("/delete", admincontroller.postdelete);
+router.get("/edit/:id", admincontroller.getedit);
+router.post("/edit-gm", admincontroller.postgmedit);
 
 module.exports = router;
