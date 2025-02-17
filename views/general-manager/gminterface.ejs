@@ -5,23 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee Profile</title>
     <link rel="stylesheet" href="/profile.css" />
+    <link rel="stylesheet" href="/bminterface.css" />
   </head>
   <body>
-    <a href="/view-<%=type%>" class="back-button">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="M19 12H5M12 19l-7-7 7-7" />
-      </svg>
-    </a>
+    <header class="header">
+      <div class="head">
+        <img src="/main.png" alt="" />
+        <h2>Bhoomi Infra Reality</h2>
+      </div>
+      <!-- <h1>Board Portal Dashboard</h1> -->
+      <a class="create-user-btn" href="/upload-doc?id=<%= employee._id %>">
+        <svg
+          class="w-6 h-6 text-gray-800 dark:text-white"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M6 16v-3h.375a.626.626 0 0 1 .625.626v1.749a.626.626 0 0 1-.626.625H6Zm6-2.5a.5.5 0 1 1 1 0v2a.5.5 0 0 1-1 0v-2Z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M11 7V2h7a2 2 0 0 1 2 2v5h1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-1a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2H3a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h6a2 2 0 0 0 2-2Zm7.683 6.006 1.335-.024-.037-2-1.327.024a2.647 2.647 0 0 0-2.636 2.647v1.706a2.647 2.647 0 0 0 2.647 2.647H20v-2h-1.335a.647.647 0 0 1-.647-.647v-1.706a.647.647 0 0 1 .647-.647h.018ZM5 11a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h1.376A2.626 2.626 0 0 0 9 15.375v-1.75A2.626 2.626 0 0 0 6.375 11H5Zm7.5 0a2.5 2.5 0 0 0-2.5 2.5v2a2.5 2.5 0 0 0 5 0v-2a2.5 2.5 0 0 0-2.5-2.5Z"
+            clip-rule="evenodd"
+          />
+          <path d="M9 7V2.221a2 2 0 0 0-.5.365L4.586 6.5a2 2 0 0 0-.365.5H9Z" />
+        </svg>
+
+        Upload Docs
+      </a>
+    </header>
     <div class="container">
       <!-- Back Button -->
 
@@ -30,7 +46,7 @@
         <div class="profile-header">
           <div class="profile-info">
             <div class="profile-image">
-              <img src="<%= employee.image %>" />
+              <img src="/<%= employee.image %>" />
             </div>
             <div class="profile-details">
               <h1><%= employee.firstname %> <%= employee.lastname %></h1>
@@ -113,53 +129,36 @@
           <!-- disp bms -->
 
           <!-- Action Buttons -->
-          <div class="action-buttons">
-            <a href="/edit/<%= employee.id %>?edit=true" class="btn-edit">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"
-                />
-              </svg>
-              Edit Profile
-            </a>
-            <form action="/delete" method="post">
-              <input type="hidden" name="id" value="<%= employee.id %>" />
-              <button type="submit" class="btn-delete">Delete</button>
-            </form>
-            <button class="btn btn-assign">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <line x1="19" y1="8" x2="19" y2="14" />
-                <line x1="22" y1="11" x2="16" y2="11" />
-              </svg>
-              Show Associates
-            </button>
-          </div>
+          <form
+            action="/General-manager/associates/<%= employee._id %>?id=<%= employee.employeeid %>"
+            method="post"
+          >
+            <div class="action-buttons">
+              <button type="submit" class="btn btn-assign">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <line x1="19" y1="8" x2="19" y2="14" />
+                  <line x1="22" y1="11" x2="16" y2="11" />
+                </svg>
+                Show Associates
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-    <div class="main table-container"></div>
+    <!-- <div class="main table-container"></div>
 
     <div>
       <% if (employee.associates && employee.associates.length > 0) { %>
@@ -173,7 +172,14 @@
         <% }); %>
       </div>
       <% } %>
-    </div>
-    <script src="/display.js"></script>
+    </div> -->
+    <footer>
+      <p>
+        &copy; 2025 Bhoomi Infra Reality | Designed and Developed by
+        <a href="/">Hitesh Kanisetty</a>
+      </p>
+    </footer>
+
+    <!-- <script src="/display.js"></script> -->
   </body>
 </html>

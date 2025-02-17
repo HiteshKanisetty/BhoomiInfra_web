@@ -114,6 +114,18 @@ exports.getgmdata = (req, res, next) => {
   Gmmodel.find().then((result) => {
     res.render("board-manager/view-gm.ejs", {
       pageTitle: "Login",
+      title: "General Managers",
+      type: "general-manager",
+      employees: result,
+    });
+  });
+};
+exports.getbadata = (req, res, next) => {
+  Bussmodel.find().then((result) => {
+    res.render("board-manager/view-gm.ejs", {
+      pageTitle: "Login",
+      title: "Bussiness Associates",
+      type: "bussiness-associate",
       employees: result,
     });
   });
@@ -146,11 +158,20 @@ exports.getselectedgm = (req, res, next) => {
   const id = req.query.id;
   Gmmodel.findById({ _id: id }).then((data) => {
     res.render("board-manager/dispgm.ejs", {
+      type: "gm",
       employee: data,
     });
   });
 };
-
+exports.getselectedba = (req, res, next) => {
+  const id = req.query.id;
+  Bussmodel.findById({ _id: id }).then((data) => {
+    res.render("board-manager/dispgm.ejs", {
+      employee: data,
+      type: "ba",
+    });
+  });
+};
 exports.postdelete = (req, res, next) => {
   const id = req.body.id;
   Gmmodel.deleteOne({ _id: id })

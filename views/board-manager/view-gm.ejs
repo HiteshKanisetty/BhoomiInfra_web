@@ -46,7 +46,7 @@
               <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
             </svg>
             <div>
-              <h1>General-Manager Directory</h1>
+              <h1><%=title%> Directory</h1>
               <p>Manage and view all employee information</p>
             </div>
           </div>
@@ -95,7 +95,7 @@
               <td>
                 <div class="employee-cell">
                   <img
-                    src="<%= employee.image %>"
+                    src="/<%= employee.image %>"
                     alt="<%= employee.firstName %> <%= employee.lastName %>"
                   />
                   <span
@@ -119,7 +119,7 @@
               <td><%= employee.gender %></td>
               <td>
                 <a
-                  href="/general-manager?id=<%= employee._id %>"
+                  href="/<%=type%>?id=<%=employee._id %>"
                   class="view-profile-link"
                 >
                   View Profile

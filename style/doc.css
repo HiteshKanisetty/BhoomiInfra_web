@@ -1,0 +1,228 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(135deg, #f0f7ff 0%, #e8f1fa 100%);
+  /* min-height: 100vh; */
+  color: #1f2937;
+  /* padding: 2rem; */
+  position: relative;
+}
+.back-button {
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  transition: all 0.2s;
+  background-color: white;
+}
+
+.back-button:hover {
+  color: #357abd;
+  transform: translateX(-4px);
+}
+/* Container styles */
+.container {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding-top: 4rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  padding: 2rem;
+}
+
+/* Header styles */
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgb(31, 41, 55);
+  margin-bottom: 1.5rem;
+}
+
+/* Upload area styles */
+.upload-area {
+  border: 2px dashed rgb(209, 213, 219);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.upload-area:hover,
+.upload-area.dragging {
+  border-color: rgb(59, 130, 246);
+  background-color: rgb(239, 246, 255);
+}
+
+.upload-icon {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+  color: rgb(156, 163, 175);
+}
+
+.upload-area:hover .upload-icon,
+.upload-area.dragging .upload-icon {
+  color: rgb(59, 130, 246);
+}
+
+.upload-text {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: rgb(55, 65, 81);
+  margin-bottom: 0.5rem;
+}
+
+.upload-subtext {
+  font-size: 0.875rem;
+  color: rgb(107, 114, 128);
+  margin-bottom: 1rem;
+}
+
+.browse-button {
+  border: 1px solid rgb(59, 130, 246);
+
+  color: rgb(59, 130, 246);
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.b-button {
+  margin: 0 auto;
+  background-color: rgb(59, 130, 246);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* .file-input {
+  display: none;
+} */
+
+/* Documents list styles */
+.documents-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.documents-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(55, 65, 81);
+}
+
+.reload-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: rgb(75, 85, 99);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.reload-button:hover {
+  color: rgb(31, 41, 55);
+}
+
+/* Empty state styles */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  background-color: rgb(249, 250, 251);
+  border-radius: 0.5rem;
+}
+
+.empty-icon {
+  width: 3rem;
+  height: 3rem;
+  color: rgb(156, 163, 175);
+  margin-bottom: 1rem;
+  margin-inline: auto;
+}
+
+.empty-text {
+  color: rgb(107, 114, 128);
+}
+
+/* Document list styles */
+.documentsList {
+  display: flex;
+  flex-wrap: wrap;
+
+  border: 1px solid rgb(229, 231, 235);
+  border-radius: 0.5rem;
+}
+.documentsList img {
+  height: 10rem;
+}
+.document-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  transition: background-color 0.2s;
+}
+
+.document-item:not(:last-child) {
+  border-bottom: 1px solid rgb(229, 231, 235);
+}
+
+.document-item:hover {
+  background-color: rgb(249, 250, 251);
+}
+
+.document-icon {
+  width: 2rem;
+  height: 2rem;
+  color: rgb(59, 130, 246);
+  flex-shrink: 0;
+}
+
+.document-info {
+  min-width: 0;
+  flex-grow: 1;
+}
+
+.document-name {
+  font-weight: 500;
+  color: rgb(17, 24, 39);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.document-meta {
+  font-size: 0.875rem;
+  color: rgb(107, 114, 128);
+}

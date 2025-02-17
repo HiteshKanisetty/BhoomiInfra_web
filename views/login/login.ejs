@@ -50,7 +50,12 @@
             <button type="submit">Sign in</button>
           </div>
         </form> -->
-        <form id="teacherForm" action="/teacher" method="post" class="active">
+        <form
+          id="teacherForm"
+          action="/General-manager"
+          method="post"
+          class="active"
+        >
           <div class="form-group">
             <label for="userId">User ID</label>
             <div class="input-group">
@@ -71,6 +76,7 @@
               <input
                 type="text"
                 id="userId"
+                name="id"
                 placeholder="Enter your user ID"
                 required
               />
@@ -96,6 +102,7 @@
               <input
                 type="password"
                 id="password"
+                name="password"
                 placeholder="Enter your password"
                 required
               />
@@ -103,7 +110,7 @@
           </div>
           <button type="submit" class="submit-button">Sign In</button>
         </form>
-        <form id="studentForm" action="/student" method="post">
+        <form id="studentForm" action="/Business-Associate" method="post">
           <div class="form-group">
             <label for="userId">User ID</label>
             <div class="input-group">
@@ -124,6 +131,7 @@
               <input
                 type="text"
                 id="userId"
+                name="id"
                 placeholder="Enter your user ID"
                 required
               />
@@ -149,6 +157,7 @@
               <input
                 type="password"
                 id="password"
+                name="password"
                 placeholder="Enter your password"
                 required
               />

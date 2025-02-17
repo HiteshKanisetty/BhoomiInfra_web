@@ -5,8 +5,8 @@ const path = require("path");
 const multer = require("multer");
 
 const adminroutes = require("./routes/board");
-const gmroutes = require("./routes/board");
-const agentroutes = require("./routes/general");
+const gmroutes = require("./routes/general");
+const agentroutes = require("./routes/agent");
 
 const app = express();
 const MONGODB_URI =
@@ -44,7 +44,7 @@ app.use("/images-form", express.static(path.join(__dirname, "images-form")));
 app.use(express.static(path.join(__dirname, "js")));
 
 app.use(adminroutes);
-// app.use(gmroutes);
+app.use(gmroutes);
 // app.use(agentroutes);
 mongoose
   .connect(MONGODB_URI)

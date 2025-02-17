@@ -7,7 +7,12 @@ const userSchema = new Schema({
   mobile: { type: String, required: true },
   age: { type: Number, required: true },
   gender: { type: String, required: true },
-  employeeid: { type: String, required: true },
+  employeeid: {
+    type: String,
+    required: true,
+    uppercase: true,
+  },
+
   layoutname: { type: String, required: true },
   plotssold: { type: Number, required: true },
   image: { type: String },
@@ -18,11 +23,25 @@ const userSchema = new Schema({
       },
     },
   ],
+  uploaddocs: [
+    {
+      doc: {
+        type: String,
+      },
+    },
+  ],
   // media_uploaded: [
   //   {
   //     type: String,
   //   },
   // ],
+});
+
+userSchema.pre("save", function (next) {
+  if (this.isModified("employeeid")) {
+    this.employeeid = this.employeeid.toUpperCase();
+  }
+  next();
 });
 
 module.exports = mongoose.model("GeneralMangers", userSchema);
