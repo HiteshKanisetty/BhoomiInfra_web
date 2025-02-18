@@ -5,14 +5,20 @@ exports.getgminterface = (req, res, next) => {
   const password = req.body.password;
   if (password === "webcap") {
     Gmmodel.findOne({ employeeid: id }).then((data) => {
-      res.render("general-manager/gminterface.ejs", { employee: data });
+      res.render("general-manager/gminterface.ejs", {
+        employee: data,
+        associate: true,
+      });
     });
   }
 };
 exports.getgm = (req, res, next) => {
   const id = req.query.id;
   Gmmodel.findOne({ _id: id }).then((data) => {
-    res.render("general-manager/gminterface.ejs", { employee: data });
+    res.render("general-manager/gminterface.ejs", {
+      employee: data,
+      associate: true,
+    });
   });
 };
 exports.getassociates = (req, res, next) => {
@@ -29,7 +35,10 @@ exports.getassociates = (req, res, next) => {
 exports.getdocform = (req, res, next) => {
   const id = req.query.id;
   Gmmodel.findOne({ _id: id }).then((data) => {
-    res.render("general-manager/doc.ejs", { employee: data });
+    res.render("general-manager/doc.ejs", {
+      employee: data,
+      type: "General-manager",
+    });
   });
 };
 

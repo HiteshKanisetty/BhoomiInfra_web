@@ -17,6 +17,13 @@ const userSchema = new Schema({
   //       type: String,
   //     },
   //   ],
+  uploaddocs: [
+    {
+      doc: {
+        type: String,
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("BussinessAssociates", userSchema);

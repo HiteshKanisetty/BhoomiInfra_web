@@ -14,7 +14,7 @@
         <h2>Bhoomi Infra Reality</h2>
       </div>
       <!-- <h1>Board Portal Dashboard</h1> -->
-      <a class="create-user-btn" href="/upload-doc?id=<%=employee._id%>">
+      <a class="create-user-btn" href="/uploadeddoc-doc?id=<%=employee._id%>">
         <svg
           class="w-6 h-6 text-gray-800 dark:text-white"
           aria-hidden="true"
@@ -129,33 +129,6 @@
           <!-- disp bms -->
 
           <!-- Action Buttons -->
-
-          <form
-            action="/General-manager/associates/<%= employee._id %>?id=<%= employee.employeeid %>"
-            method="post"
-          >
-            <div class="action-buttons">
-              <button type="submit" class="btn btn-assign">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <line x1="19" y1="8" x2="19" y2="14" />
-                  <line x1="22" y1="11" x2="16" y2="11" />
-                </svg>
-                Show Associates
-              </button>
-            </div>
-          </form>
         </div>
       </div>
     </div>

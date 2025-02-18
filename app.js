@@ -45,7 +45,7 @@ app.use(express.static(path.join(__dirname, "js")));
 
 app.use(adminroutes);
 app.use(gmroutes);
-// app.use(agentroutes);
+app.use(agentroutes);
 mongoose
   .connect(MONGODB_URI)
   .then((result) => {
