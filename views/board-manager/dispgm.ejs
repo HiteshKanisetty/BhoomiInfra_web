@@ -136,6 +136,7 @@
               <input type="hidden" name="id" value="<%= employee.id %>" />
               <button type="submit" class="btn-delete">Delete</button>
             </form>
+            <% if (type==="gm") { %>
             <button class="btn btn-assign">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -162,18 +163,23 @@
     <div class="main table-container"></div>
 
     <div>
-      <% if (employee.associates && employee.associates.length > 0) { %>
+      <% if ((employee.associates && employee.associates.length) > 0) { %>
       <div>
         <% employee.associates.forEach(function(associate) { %>
         <input
-          type="hidden"
+          type="text"
           class="associate"
           value="<%= associate.associate %>"
         />
         <% }); %>
       </div>
+      <% }else{ %>
+      <div>
+        <p>No associates found</p>
+      </div>
       <% } %>
     </div>
+    <% } %>
     <script src="/display.js"></script>
   </body>
 </html>
