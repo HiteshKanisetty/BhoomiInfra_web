@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="/profile.css" />
   </head>
   <body>
+    <div id="documentModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <img id="modalImage" src="" alt="Document Preview" />
+      </div>
+    </div>
     <a href="/view-<%=type%>" class="back-button">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -158,6 +164,48 @@
             </button>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="container documents-section">
+      <div class="documents-container">
+        <h2 class="h2">Uploaded Documents</h2>
+        <% if (employee.uploaddocs && employee.uploaddocs.length > 0) { %>
+        <div class="documents-grid">
+          <% employee.uploaddocs.forEach(function(doc) { %>
+          <div class="document-card">
+            <div class="document-preview">
+              <img src="<%= doc.doc %>" alt="<%= doc.name %>" />
+            </div>
+            <div class="document-info">
+              <span class="document-date"
+                ><%= new Date(doc.uploadDate).toLocaleDateString() %></span
+              >
+            </div>
+          </div>
+          <% }); %>
+        </div>
+        <% } else { %>
+        <div class="no-documents">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+            ></path>
+            <polyline points="13 2 13 9 20 9"></polyline>
+          </svg>
+          <p>No documents uploaded</p>
+        </div>
+        <% } %>
       </div>
     </div>
     <div class="main table-container"></div>

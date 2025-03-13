@@ -3,6 +3,7 @@ const bodyparser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
 const multer = require("multer");
+const fs = require("fs");
 
 const adminroutes = require("./routes/board");
 const gmroutes = require("./routes/general");
@@ -16,14 +17,20 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 const filestorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "images-form");
+    const uploadPath = path.join(
+      __dirname,
+      "images-form",
+      new Date().toISOString().split("T")[0]
+    );
+    fs.mkdirSync(uploadPath, { recursive: true });
+    cb(null, uploadPath);
   },
   filename: (req, file, cb) => {
-    cb(
-      null,
-      new Date().toISOString().replace(/\-/g, "").replace(/\:/g, "") +
-        file.originalname
-    );
+    const datePath = new Date().toISOString().split("T")[0];
+    const filename =
+      new Date().toISOString().replace(/[-:]/g, "") + file.originalname;
+    req.filePath = path.join("images-form", datePath, filename); // Store the relative path in req.filePath
+    cb(null, filename);
   },
 });
 const filefilter = (req, file, cb) => {

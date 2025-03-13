@@ -22,6 +22,10 @@ const userSchema = new Schema({
       doc: {
         type: String,
       },
+      uploadDate: {
+        type: Date,
+        default: Date.now,
+      },
     },
   ],
 });

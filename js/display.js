@@ -114,3 +114,62 @@ button.addEventListener("click", () => {
 
 </div> */
 }
+// Modal functionality
+// Modal functionality
+function openModal(imageUrl) {
+  const modal = document.getElementById("documentModal");
+  const modalImg = document.getElementById("modalImage");
+
+  if (!modal || !modalImg) {
+    console.error("Modal elements not found");
+    return;
+  }
+
+  modalImg.src = imageUrl;
+  modal.style.display = "block";
+
+  // Prevent body scrolling when modal is open
+  document.body.style.overflow = "hidden";
+}
+
+// Wait for DOM to be fully loaded
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("documentModal");
+  const closeButton = document.querySelector(".close-modal");
+  const documentCards = document.querySelectorAll(".document-card");
+
+  // Add click handlers to all document cards
+  documentCards.forEach((card) => {
+    card.addEventListener("click", (e) => {
+      const imageUrl = card.querySelector(".document-preview img").src;
+      openModal(imageUrl);
+    });
+  });
+
+  if (closeButton) {
+    // Close modal when clicking the close button
+    closeButton.addEventListener("click", () => {
+      if (!modal) return;
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    });
+  }
+
+  if (modal) {
+    // Close modal when clicking outside the image
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+    });
+  }
+
+  // Close modal with escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal) {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+  });
+});

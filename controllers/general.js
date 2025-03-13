@@ -44,7 +44,8 @@ exports.getdocform = (req, res, next) => {
 
 exports.postdoc = (req, res, next) => {
   const image = req.file;
-  const imageurl = image.path;
+  const imageurl = req.filePath;
+
   const id = req.body.id;
   Gmmodel.findOneAndUpdate(
     { _id: id },

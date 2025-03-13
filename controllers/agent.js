@@ -33,7 +33,7 @@ exports.getba = (req, res, next) => {
 };
 exports.postdocument = (req, res, next) => {
   const image = req.file;
-  const imageurl = image.path;
+  const imageurl = req.filePath;
   const id = req.body.id;
   Bussmodel.findOneAndUpdate(
     { _id: id },
