@@ -12,7 +12,7 @@ exports.getbmlogin = (req, res, next) => {
   });
 };
 exports.postbmlogin = (req, res, next) => {
-  const id = req.body.userid;
+  const id = req.body.id;
   const password = req.body.password;
   if (id == "1234" && password == "bir") {
     res.render("board-manager/bminterface.ejs", {
