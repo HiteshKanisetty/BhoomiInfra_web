@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/reg-form.css" />
   </head>
   <body>
-    <a href="/view-gm" class="back-button">
+    <a href="/view-<%=type%>" class="back-button">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -52,13 +52,13 @@
         <!-- Form -->
         <form
           id="registrationForm-gm"
-          action="/edit-gm"
+          action="/edit-<%=type%>"
           method="POST"
           novalidate
           enctype="multipart/form-data"
         >
-          <input type="text" value="<%=gmdata.id %>" name="id" />
           <!-- Name Fields -->
+          <input type="hidden" name="id" value="<%=gmdata._id%>" />
           <div class="form-row">
             <div class="form-group">
               <label for="firstName">First Name</label>
@@ -137,32 +137,24 @@
                 required
               />
             </div>
+          </div>
+
+          <!-- Guidance Field -->
+          <% if(type === 'ba'){ %>
+          <div class="form-row">
             <div class="form-group">
-              <label for="layoutName">Layout Name</label>
-              <select id="layoutName" name="layoutname" required>
-                <option value="">Select layout</option>
-                <option value="Green Valley">Green Valley</option>
-                <option value="Sunset Heights">Sunset Heights</option>
-                <option value="Royal Gardens">Royal Gardens</option>
-                <option value="Lake View">Lake View</option>
-                <option value="Mountain Vista">Mountain Vista</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="plotsSold">Plots Sold</label>
+              <label for="employeeId">Guidance ID</label>
               <input
-                type="number"
-                id="plotsSold"
-                name="plotssold"
-                value="<%=gmdata.plotssold%>"
-                placeholder="Enter number of plots"
+                type="text"
+                id="employeeId"
+                value="<%=gmdata.guidance%>"
+                name="guidance"
+                placeholder="Enter employee ID"
                 required
               />
             </div>
           </div>
-
-          <!-- Guidance Field -->
-
+          <% } %>
           <!-- File Upload -->
 
           <!-- Submit Button -->
