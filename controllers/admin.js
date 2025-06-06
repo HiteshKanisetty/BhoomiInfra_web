@@ -31,31 +31,27 @@ exports.getform = (req, res, next) => {
   });
 };
 exports.postformgm = (req, res, next) => {
-  const { firstname, lastname, mobile, age, gender, role, guidance } = req.body;
+  const { firstname, lastname, mobile, age, gender, employeeid } = req.body;
   const image = req.filePath;
-  if (guidance) {
-    Gmmodel.findOneAndUpdate(
-      { employeeid: guidance },
-      { $push: { associates: { associate: firstname } } },
-      { new: true }
-    ).then((result) => {
-      console.log("Associates Updated");
-    });
-  }
-  const imageurl = image.filePath;
-  const gmmodel = new Gmmodel({
-    firstname: firstname,
-    lastname: lastname,
-    mobile: mobile,
-    age: age,
-    gender: gender,
-    role: role,
-    guidance: guidance,
-    image: image,
-  });
-  gmmodel.save().then((result) => {
-    console.log("User Created");
-    res.redirect("/create-user");
+  Gmmodel.find({ employeeid: employeeid }).then((result) => {
+    if (result.length > 0) {
+      return res.status(400).json({ message: "User Already Exists" });
+    } else {
+      const imageurl = image.filePath;
+      const gmmodel = new Gmmodel({
+        firstname: firstname,
+        lastname: lastname,
+        mobile: mobile,
+        age: age,
+        gender: gender,
+        employeeid: employeeid,
+        image: image,
+      });
+      gmmodel.save().then((result) => {
+        console.log("User Created");
+        res.redirect("/create-user");
+      });
+    }
   });
 };
 exports.postformba = (req, res, next) => {
