@@ -73,14 +73,9 @@
           </div>
         </div>
       </header>
-      <div class="loading-wave" id="loader">
-        <div class="loading-bar"></div>
-        <div class="loading-bar"></div>
-        <div class="loading-bar"></div>
-        <div class="loading-bar"></div>
-      </div>
+
       <!-- Employee Table -->
-      <div class="table-container content" id="content" style="display: none">
+      <div class="table-container">
         <table class="employee-table">
           <thead>
             <tr>
@@ -151,17 +146,6 @@
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const loader = document.getElementById("loader");
-        const content = document.getElementById("content");
-
-        // Simulate data fetching with a timeout
-        setTimeout(() => {
-          // Hide the loader and show the content
-          loader.style.display = "none";
-          content.style.display = "block";
-        }, 1000); // Adjust the timeout duration as needed
-      });
       // Search functionality
       document
         .getElementById("searchInput")

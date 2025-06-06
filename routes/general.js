@@ -11,5 +11,5 @@ router.post(
 router.get("/upload-doc", generalcontroller.getdocform);
 router.post("/uploaddocs-post", generalcontroller.postdoc);
 router.get("/get-docs", generalcontroller.getdocuments);
-router.delete("/delete-doc", generalcontroller.docdelete);
+
 module.exports = router;

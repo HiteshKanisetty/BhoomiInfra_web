@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/doc.css" />
   </head>
   <body>
-    <% if(isAuthenticated){%>
     <a href="/general-manager/ass?id=<%=employee._id%>" class="back-button">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -99,47 +98,13 @@
           <% if (employee.uploaddocs.length > 0) { %>
           <!-- <div> -->
           <% employee.uploaddocs.forEach(function(doc) { %>
-          <div class="document-item">
-            <img src="<%= doc.doc %>" />
-            <button class="delete-button" data-doc-id="<%= doc._id %>">
-              Delete
-            </button>
-          </div>
+          <img src="<%= doc.doc %>" />
           <% }); %>
           <!-- </div> -->
           <% } %>
         </div>
       </div>
     </div>
-    <% } else { %>
-    <h1>Unauthorized Access</h1>
-    <% } %>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const deleteButtons = document.querySelectorAll(".delete-button");
-
-        deleteButtons.forEach((button) => {
-          button.addEventListener("click", function () {
-            const docId = this.getAttribute("data-doc-id");
-            const employeeId = "<%= employee._id %>";
-
-            fetch(`/delete-doc?id=${employeeId}&docId=${docId}`, {
-              method: "DELETE",
-            })
-              .then((response) => response.json())
-              .then((data) => {
-                if (data.success) {
-                  this.parentElement.remove();
-                } else {
-                  alert("Failed to delete document");
-                }
-              })
-              .catch((error) => console.error("Error:", error));
-          });
-        });
-      });
-    </script>
     <!-- <script>
       const btn = document.querySelector(".reload-button");
       const main = document.querySelector(".documentsList");

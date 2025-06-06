@@ -12,13 +12,10 @@ const userSchema = new Schema({
     required: true,
     uppercase: true,
   },
+
+  layoutname: { type: String, required: true },
+  plotssold: { type: Number, required: true },
   image: { type: String },
-  layouts: [
-    {
-      name: { type: String },
-      plotsSold: { type: Number },
-    },
-  ],
   associates: [
     {
       associate: {
