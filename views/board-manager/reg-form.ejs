@@ -4,52 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee Registration</title>
-    <style>
-      /* Modal Styles */
-      .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-        backdrop-filter: blur(5px); /* Blurry background */
-      }
-      .set {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-      }
-      .img img {
-        width: 7rem;
-      }
-      .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto; /* 15% from the top and centered */
-        padding: 2rem 3rem;
-        border-radius: 2rem;
-        border: 1px solid #888;
-        width: 40%; /* Could be more or less, depending on screen size */
-        text-align: center;
-      }
-
-      .close-button {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-      }
-
-      .close-button:hover,
-      .close-button:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-      }
-    </style>
     <link rel="stylesheet" href="reg-form.css" />
   </head>
   <body>
@@ -95,13 +49,17 @@
           </div>
           <img src="main.png" class="collimg" alt="" />
         </div>
-
+        <select id="role" onchange="changeForm()">
+          <option value="">Select</option>
+          <option value="Generalmanager">General-Manager</option>
+          <option value="Bussinessassociate">Bussiness-Associate</option>
+        </select>
         <!-- Form -->
-
         <form
-          id="registrationForm-ba"
+          id="registrationForm-gm"
           action="/create-user-gm"
           method="POST"
+          style="display: none"
           novalidate
           enctype="multipart/form-data"
         >
@@ -162,30 +120,24 @@
           </div>
 
           <!-- Employee Info -->
-
-          <!-- Guidance Field -->
           <div class="form-row">
             <div class="form-group">
-              <label for="Employee Role">Employee Role</label>
-              <select id="Employee Role" name="role" required>
-                <option value="">Select Role of the Employee</option>
-                <option value="General-manager">General-manager</option>
-                <option value="Business-Associate">Business-Associate</option>
-              </select>
-            </div>
-            <div class="form-group-new">
-              <label for="guidance">Sponsor Id </label>
+              <label for="employeeId">Employee ID</label>
               <input
-                id="guidance"
                 type="text"
-                name="guidance"
-                placeholder="Enter Sponser Id "
+                id="employeeId"
+                name="employeeid"
+                placeholder="Enter employee ID"
+                required
               />
             </div>
           </div>
+
+          <!-- Guidance Field -->
+
           <!-- File Upload -->
           <div class="form-group">
-            <label>Upload User Image </label>
+            <label>Upload Documents</label>
             <div class="file-upload">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -206,21 +158,126 @@
               <input type="file" name="image" />
             </div>
           </div>
-          <!-- Modal Structure -->
-          <div id="successModal" class="modal">
-            <div class="modal-content">
-              <span class="close-button">&times;</span>
-              <div class="set">
-                <div class="img">
-                  <img src="main.png" alt="Success" />
-                </div>
-                <div>
-                  <h2>Success!</h2>
-                  <p>User created successfully.</p>
-                </div>
-              </div>
+
+          <!-- Submit Button -->
+          <div class="form-submit">
+            <button type="submit">Register</button>
+          </div>
+        </form>
+        <form
+          id="registrationForm-ba"
+          action="/create-user-ba"
+          method="POST"
+          style="display: none"
+          novalidate
+          enctype="multipart/form-data"
+        >
+          <!-- Name Fields -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstname"
+                placeholder="Enter first name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastname"
+                placeholder="Enter last name"
+                required
+              />
             </div>
           </div>
+
+          <!-- Contact and Personal Info -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="mobileNumber">Mobile Number</label>
+              <input
+                type="tel"
+                id="mobileNumber"
+                name="mobile"
+                placeholder="Enter mobile number"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input
+                type="number"
+                name="age"
+                id="age"
+                placeholder="Enter age"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select id="gender" name="gender" required>
+                <option value="">Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Employee Info -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="employeeId">Employee ID</label>
+              <input
+                type="text"
+                id="employeeId"
+                name="employeeid"
+                placeholder="Enter employee ID"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Guidance Field -->
+          <div class="form-row">
+            <div class="form-group-new">
+              <label for="guidance">Guidance</label>
+              <input
+                id="guidance"
+                type="text"
+                name="guidance"
+                placeholder="Enter guidance or additional notes"
+              />
+            </div>
+          </div>
+          <!-- File Upload -->
+          <div class="form-group">
+            <label>Upload Documents</label>
+            <div class="file-upload">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" y1="3" x2="12" y2="15" />
+              </svg>
+              <span>Click or drag files to upload</span>
+              <input type="file" name="image" />
+            </div>
+          </div>
+
           <!-- Submit Button -->
           <div class="form-submit">
             <button type="submit">Register</button>
@@ -229,43 +286,6 @@
       </div>
     </div>
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const form = document.getElementById("registrationForm-ba");
-        const modal = document.getElementById("successModal");
-        const closeButton = document.querySelector(".close-button");
-
-        form.addEventListener("submit", (event) => {
-          // Prevent the default form submission
-
-          // Simulate form submission and show the modal
-          setTimeout(() => {
-            modal.style.display = "block";
-          }, 500); // Adjust the timeout duration as needed
-
-          // Optionally, you can submit the form via AJAX here
-          // const formData = new FormData(form);
-          // fetch(form.action, {
-          //   method: form.method,
-          //   body: formData,
-          // }).then(response => {
-          //   if (response.ok) {
-          //     modal.style.display = "block";
-          //   }
-          // });
-        });
-
-        closeButton.addEventListener("click", () => {
-          modal.style.display = "none";
-        });
-
-        window.addEventListener("click", (event) => {
-          if (event.target === modal) {
-            modal.style.display = "none";
-          }
-        });
-      });
-    </script>
-    <!-- <script>
       function changeForm() {
         var role = document.getElementById("role").value;
         if (role === "Generalmanager") {
@@ -282,6 +302,6 @@
         }
       }
       role.addEventListener("change", () => {});
-    </script> -->
+    </script>
   </body>
 </html>
