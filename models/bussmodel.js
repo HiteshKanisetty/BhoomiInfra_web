@@ -8,10 +8,15 @@ const userSchema = new Schema({
   age: { type: Number, required: true },
   gender: { type: String, required: true },
   employeeid: { type: String, required: true },
-  layoutname: { type: String, required: true },
-  plotssold: { type: Number, required: true },
+
   guidance: { type: String, required: true },
   image: { type: String },
+  layouts: [
+    {
+      name: { type: String, required: true },
+      plotsSold: { type: Number, required: true },
+    },
+  ],
   //   media_uploaded: [
   //     {
   //       type: String,

@@ -4,7 +4,10 @@ const mongoose = require("mongoose");
 const path = require("path");
 const multer = require("multer");
 const fs = require("fs");
-
+const session = require("express-session");
+const flash = require("connect-flash");
+const Gmmodel = require("./models/gmmodel");
+const Bussmodel = require("./models/bussmodel");
 const adminroutes = require("./routes/board");
 const gmroutes = require("./routes/general");
 const agentroutes = require("./routes/agent");
@@ -49,7 +52,65 @@ app.use(express.static(path.join(__dirname, "style")));
 app.use(express.static(path.join(__dirname, "images")));
 app.use("/images-form", express.static(path.join(__dirname, "images-form")));
 app.use(express.static(path.join(__dirname, "js")));
+// app.use(
+//   session({
+//     secret: "my secret",
+//     resave: false,
+//     saveUninitialized: false,
+//   })
+// );
 
+// app.use((req, res, next) => {
+//   if (!req.session.user) {
+//     return next();
+//   }
+
+//   const userId = req.session.user._id;
+//   const userType = req.session.user.type;
+
+//   if (userType === "gm") {
+//     Gmmodel.findById(userId)
+//       .then((user) => {
+//         if (user) {
+//           req.user = user;
+//           return next();
+//         }
+//         return Bussmodel.findById(userId);
+//       })
+//       .then((user) => {
+//         if (user) {
+//           req.user = user;
+//         }
+//         next();
+//       })
+//       .catch((err) => console.log(err));
+//   } else if (userType === "ba") {
+//     Bussmodel.findById(userId)
+//       .then((user) => {
+//         if (user) {
+//           req.user = user;
+//           return next();
+//         }
+//         return Gmmodel.findById(userId);
+//       })
+//       .then((user) => {
+//         if (user) {
+//           req.user = user;
+//         }
+//         next();
+//       })
+//       .catch((err) => console.log(err));
+//   } else {
+//     next();
+//   }
+// });
+
+// app.use((req, res, next) => {
+//   res.locals.isAuthenticated = req.session.isLoggedIn;
+//   next();
+// });
+
+app.use(flash());
 app.use(adminroutes);
 app.use(gmroutes);
 app.use(agentroutes);
