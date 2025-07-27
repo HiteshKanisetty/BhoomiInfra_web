@@ -116,12 +116,14 @@ body {
   font-size: 0.875rem;
 }
 .head {
+  height: 2.5rem;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .head img {
-  height: 2.5rem;
+  height: 3rem;
   margin-right: 1.5rem;
 }
 footer {

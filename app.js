@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const bodyparser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -13,8 +14,7 @@ const gmroutes = require("./routes/general");
 const agentroutes = require("./routes/agent");
 
 const app = express();
-const MONGODB_URI =
-  "mongodb+srv://hiteshkanisetty:Hitu9866@cluster0.mglnz.mongodb.net/data?retryWrites=true&w=majority&appName=cluster-BIR";
+const MONGODB_URI = process.env.MONGODB_URI;
 const port = 3000;
 app.set("view engine", "ejs");
 app.set("views", "views");
